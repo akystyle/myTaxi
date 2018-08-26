@@ -35,7 +35,6 @@ public class ExampleInstrumentedTest {
     @Rule
     public ActivityTestRule<MainActivity> mAct = new ActivityTestRule<>(MainActivity.class,false,false);
     public SharedPrefUtil myPreferenece = new SharedPrefUtil();
-    public CustomIdlingResource idlingRes = new CustomIdlingResource("MainActivity");
 
     @Test
     public void approach1() throws Exception {
