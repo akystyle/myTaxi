@@ -67,8 +67,12 @@ public class ExampleInstrumentedTest {
     private void dropCache(){
         File root = InstrumentationRegistry.getTargetContext().getFilesDir().getParentFile();
         String[] sharedPreferencesFileNames = new File(root, "shared_prefs").list();
-        for (String fileName : sharedPreferencesFileNames) {
-            InstrumentationRegistry.getTargetContext().getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE).edit().clear().commit();
+        if(sharedPreferencesFileNames==null){
+            
+        }else {
+            for (String fileName : sharedPreferencesFileNames) {
+                InstrumentationRegistry.getTargetContext().getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE).edit().clear().commit();
+            }
         }
     }
 }
