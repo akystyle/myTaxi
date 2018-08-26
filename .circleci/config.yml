@@ -36,8 +36,8 @@ jobs:
           key: v1-dependencies-{{ checksum "~/repo/AndroidDemo/build.gradle" }}
         
       # run tests!
-	  - run: cd AndroidDemo
-      - run: gradle test
+	  
+      - run: ./AndroidDemo/gradle test
 
 
 
