@@ -12,7 +12,7 @@ jobs:
           key: jars-{{ checksum  "~/code/AndroidDemo/build.gradle" }}
       - run:
           name: Download Dependencies
-          command: ./code/AndroidDemo/gradlew androidDependencies
+          command: ~/code/AndroidDemo/gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
@@ -32,9 +32,9 @@ jobs:
             adb shell input keyevent 82
       - run:
           name: Run EspressoTests
-          command: ./code/AndroidDemo/gradlew connectedAndroidTest
+          command: ~/code/AndroidDemo/gradlew connectedAndroidTest
       - store_artifacts:
-          path: ./code/AndroidDemo/app/build/reports
+          path: ~/code/AndroidDemo/app/build/reports
           destination: reports
       - store_test_results:
-          path: ./code/AndroidDemo/app/build/test-results
+          path: ~/code/AndroidDemo/app/build/test-results
