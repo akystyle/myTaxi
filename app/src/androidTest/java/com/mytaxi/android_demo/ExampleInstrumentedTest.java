@@ -37,7 +37,6 @@ public class ExampleInstrumentedTest {
     public SharedPrefUtil myPreferenece = new SharedPrefUtil();
     public CustomIdlingResource idlingRes = new CustomIdlingResource("MainActivity");
 
-    /*
     @Test
     public void approach1() throws Exception {
 
@@ -65,7 +64,6 @@ public class ExampleInstrumentedTest {
 
         onView(withId(R.id.fab)).perform(click());
     }
-    */
 
     @Test
     public void approach2() throws Exception{
