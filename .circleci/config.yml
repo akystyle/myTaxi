@@ -17,9 +17,7 @@ jobs:
           - v1-dependencies-{{ checksum "build.gradle" }}
           - v1-dependencies-
 
-      - run: 
-		name: Dependency Resolve
-		command: ./repo/gradlew androidDependencies
+      - run: ./repo/gradlew androidDependencies
 
       - save_cache:
           paths:
