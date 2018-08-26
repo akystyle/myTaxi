@@ -20,24 +20,21 @@ jobs:
     
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "~/repo/AndroidDemo/build.gradle" }}
+          - v1-dependencies-{{ checksum "repo/build.gradle" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle dependencies
+      - run: 
+		name: 
+		command: ./repo/gradlew androidDependencies
 
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "~/repo/AndroidDemo/build.gradle" }}
+          key: v1-dependencies-{{ checksum "repo/build.gradle" }}
         
       # run tests!
-	  
-      - run: ./AndroidDemo/gradle test
-
-
-
+      - run: ./repo/gradlew connectedAndroidTest
