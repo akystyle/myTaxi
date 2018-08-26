@@ -35,4 +35,4 @@ jobs:
           key: v1-dependencies-{{ checksum "~/repo/AndroidDemo/build.gradle" }}
         
       # run tests!
-      - run: ~/repo/AndroidDemo/gradle connectedAndroidTest
+      - run: ~/repo/AndroidDemo/gradlew connectedAndroidTest
