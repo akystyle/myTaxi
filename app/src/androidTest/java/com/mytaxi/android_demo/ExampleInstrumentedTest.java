@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.mytaxi.android_demo.activities.MainActivity;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,8 +28,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 
-@RunWith(AndroidJUnit4.class)
-@LargeTest
+//@RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
 
 
@@ -36,6 +36,11 @@ public class ExampleInstrumentedTest {
     public ActivityTestRule<MainActivity> mAct = new ActivityTestRule<>(MainActivity.class,false,false);
     public SharedPrefUtil myPreferenece = new SharedPrefUtil();
     public CustomIdlingResource idlingRes = new CustomIdlingResource("MainActivity");
+
+    @Before
+    public void setup() throws Exception{
+        mAct.launchActivity(null);
+    }
 
     /*
     @Test
@@ -67,7 +72,7 @@ public class ExampleInstrumentedTest {
     }
     */
 
-    @Test
+    //@Test
     public void approach2() throws Exception{
         myPreferenece.RemovedCachedCredentials();
         mAct.launchActivity(null);
@@ -78,10 +83,11 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.btn_login)).perform(click());
         //TODO implement idling resource mechanism instead of Thread Sleep
         Thread.sleep(2000);
-        onView(withId(R.id.textSearch)).perform(clearText());
+        onView(withId(R.id.textSearch)).check(matches(ViewMatchers.withText("")));
         onView(withId(R.id.textSearch)).perform(ViewActions.typeText("sa"), closeSoftKeyboard());
 
         onView(withText("Sara Christensen"))
+
                 .inRoot(withDecorView(not(is(mAct.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
         onView(withText("Sarah Scott"))
